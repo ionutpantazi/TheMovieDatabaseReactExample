@@ -11,3 +11,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  padding: 5% 10%;
+}
+
+.search{
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid #04AA6D;
+  background: #f2f2f2;
+}
+
+.tableContainer {
+  margin-top: 20px;
+  height: 400px;
+  overflow: auto;
+  margin-bottom: 20px;
+  border: 1px solid #04AA6D;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+  padding: 8px;
+  position: sticky;
+  top: 0;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:hover {background-color: #ddd;}
+
+.id {
+  width: 5%;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.name {
+  width: 80%;
+  border: 1px solid #ddd;
+}
+
+.rating {
+  cursor: pointer;
+  width: 15%;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.ratingData {
+  text-align: center;
+}
+
+.info {
+  color: #04AA6D;
+}
