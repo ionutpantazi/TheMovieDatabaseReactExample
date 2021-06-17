@@ -16,7 +16,7 @@ class App extends React.Component {
     let result = []
     let prop = this.state.apiResult
     for (var x = 0; x < prop.length; x++) {
-      if (prop[x].title.toLowerCase().search(input.toLowerCase()) == 0) {
+      if (prop[x].title.toLowerCase().search(input.toLowerCase()) === 0) {
         result.push(prop[x])
       }
     }
@@ -75,7 +75,7 @@ class App extends React.Component {
                     this.setState({ searchResult: this.orderBy(tableData, this.state.sort ? this.state.sort : 'des') })
                   }}
                 >
-                  Rating{this.state.sort ? this.state.sort == 'asc' ? ' ↓' : ' ↑' : ''}
+                  Rating{this.state.sort ? this.state.sort === 'asc' ? ' ↓' : ' ↑' : ''}
                 </th>
               </tr>
             </thead>
