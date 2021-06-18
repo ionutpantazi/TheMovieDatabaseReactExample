@@ -1,23 +1,55 @@
-import React from 'react'
+import * as React from 'react';
+require('./index.css');
 
-class App extends React.Component {
+interface keyable {
+  [key: string]: any
+}
+
+interface State {
+  apiResult?: keyable[];
+  searchResult?: keyable[];
+  sort?: string
+}
+
+const container = {
+  padding: '5% 10%'
+}
+
+const search = {
+  padding: '10px',
+  fontSize: '17px',
+  border: '1px solid #04AA6D',
+  backgroundColor: '#f2f2f2'
+}
+
+const tableContainer = {
+  marginTop: '20px',
+  height: '400px',
+  overflow: 'auto',
+  marginBottom: '20px',
+  border: '1px solid #04AA6D'
+}
+
+export class App extends React.Component<{}, State> {
   constructor(props) {
-    super(props);
+    super(props)
+    this.onSearch = this.onSearch.bind(this)
     this.state = {
-      apiResult: null,
-      searchResult: null,
-      sort: null
+      apiResult: [],
+      searchResult: [],
+      sort: ''
     };
   }
   componentDidMount() {
     this.fetchApi()
   }
-  onSearch(input) {
-    let result = []
+  onSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    let input = e.target.value
+    let result = Array<keyable>()
     let prop = this.state.apiResult
-    for (var x = 0; x < prop.length; x++) {
-      if (prop[x].title.toLowerCase().search(input.toLowerCase()) === 0) {
-        result.push(prop[x])
+    for (var val of prop!) {
+      if (val.title.toLowerCase().search(input.toLowerCase()) === 0) {
+        result.push(val)
       }
     }
     this.setState({ searchResult: result })
@@ -52,14 +84,14 @@ class App extends React.Component {
   render() {
     let tableData = this.state.searchResult ? this.state.searchResult : null
     return (
-      <div className='container'>
+      <div style={container}>
         <input
           type="text"
           placeholder="Search by title"
-          className='search'
-          onChange={({ target: { value: input } }) => this.onSearch(input)}
+          style={search}
+          onChange={this.onSearch}
         />
-        <div className='tableContainer'>
+        <div style={tableContainer}>
           <table>
             <thead>
               <tr>
@@ -85,8 +117,8 @@ class App extends React.Component {
                   return (
                     <tr key={element}>
                       <td className='id'>{element}</td>
-                      <td>{tableData[element].title}</td>
-                      <td className='ratingData'>{tableData[element].vote_average}</td>
+                      <td>{tableData![element].title}</td>
+                      <td className='ratingData'>{tableData![element].vote_average}</td>
                     </tr>
                   )
                 })
