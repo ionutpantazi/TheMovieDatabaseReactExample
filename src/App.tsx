@@ -11,25 +11,6 @@ interface State {
   sort?: string
 }
 
-const container = {
-  padding: '5% 10%'
-}
-
-const search = {
-  padding: '10px',
-  fontSize: '17px',
-  border: '1px solid #04AA6D',
-  backgroundColor: '#f2f2f2'
-}
-
-const tableContainer = {
-  marginTop: '20px',
-  height: '400px',
-  overflow: 'auto',
-  marginBottom: '20px',
-  border: '1px solid #04AA6D'
-}
-
 export class App extends React.Component<{}, State> {
   constructor(props) {
     super(props)
@@ -84,14 +65,14 @@ export class App extends React.Component<{}, State> {
   render() {
     let tableData = this.state.searchResult ? this.state.searchResult : null
     return (
-      <div style={container}>
+      <div className='container'>
         <input
           type="text"
           placeholder="Search by title"
-          style={search}
+          className='search'
           onChange={this.onSearch}
         />
-        <div style={tableContainer}>
+        <div className='tableContainer'>
           <table>
             <thead>
               <tr>
